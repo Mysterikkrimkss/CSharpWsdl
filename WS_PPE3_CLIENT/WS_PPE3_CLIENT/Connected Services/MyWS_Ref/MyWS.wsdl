@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Liste_Mission">
+        <s:complexType />
+      </s:element>
+      <s:element name="Liste_MissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Liste_MissionResult" type="tns:ArrayOfC_Mission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfC_Mission">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="C_Mission" nillable="true" type="tns:C_Mission" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="C_Mission">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Mission" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Personne" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Note_de_frais" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nom_Mission" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_mission" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="persone_select" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Liste_Personnel">
+        <s:complexType />
+      </s:element>
+      <s:element name="Liste_PersonnelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Liste_PersonnelResult" type="tns:ArrayOfC_PERSONNEL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfC_PERSONNEL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="C_PERSONNEL" nillable="true" type="tns:C_PERSONNEL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="C_PERSONNEL">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_perso" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MATRICULE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NOM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PRENOM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RUE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CP" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VILLE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DATE_D_EMBAUCHE" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isadmin" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Missions_By_Name_User">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="P_NOM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Missions_By_Name_UserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Missions_By_Name_UserResult" type="tns:ArrayOfC_Mission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Personnel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="P_MATRICULE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_NOM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_PRENOM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_RUE" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="P_CP" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_VILLE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_DATE_D_EMBAUCHE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_PersonnelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_PersonnelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Missions_By_Id_User">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="P_personne" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Missions_By_Id_UserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Missions_By_Id_UserResult" type="tns:ArrayOfC_Mission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Je_Me_Connecte">
+        <s:complexType />
+      </s:element>
+      <s:element name="Je_Me_ConnecteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Je_Me_ConnecteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Personnel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="P_MATRICULE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_NOM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_PRENOM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_RUE" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="P_CP" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_VILLE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_DATE_D_EMBAUCHE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="P_password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_PersonnelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_PersonnelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="P_user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_userResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_mission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID_personne" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_note_de_frais" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="date_mission" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_per" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_missionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insert_missionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_Frais">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DATE_DEPOT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nom" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_FraisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insert_FraisResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_ligne_Frais">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nom_frais" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nom" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="donner" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_ligne_FraisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insert_ligne_FraisResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="List_note_frais">
+        <s:complexType />
+      </s:element>
+      <s:element name="List_note_fraisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="List_note_fraisResult" type="tns:ArrayOfC_Note_Frais" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfC_Note_Frais">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="C_Note_Frais" nillable="true" type="tns:C_Note_Frais" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="C_Note_Frais">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_note_frais" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_depot" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="nom_note" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="list_ligne_frais">
+        <s:complexType />
+      </s:element>
+      <s:element name="list_ligne_fraisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="list_ligne_fraisResult" type="tns:ArrayOfC_Liste_Frais" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfC_Liste_Frais">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="C_Liste_Frais" nillable="true" type="tns:C_Liste_Frais" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="C_Liste_Frais">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_ligne_frais" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="nom_ligne" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="total" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="donner" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Liste_MissionSoapIn">
+    <wsdl:part name="parameters" element="tns:Liste_Mission" />
+  </wsdl:message>
+  <wsdl:message name="Liste_MissionSoapOut">
+    <wsdl:part name="parameters" element="tns:Liste_MissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="Liste_PersonnelSoapIn">
+    <wsdl:part name="parameters" element="tns:Liste_Personnel" />
+  </wsdl:message>
+  <wsdl:message name="Liste_PersonnelSoapOut">
+    <wsdl:part name="parameters" element="tns:Liste_PersonnelResponse" />
+  </wsdl:message>
+  <wsdl:message name="Missions_By_Name_UserSoapIn">
+    <wsdl:part name="parameters" element="tns:Missions_By_Name_User" />
+  </wsdl:message>
+  <wsdl:message name="Missions_By_Name_UserSoapOut">
+    <wsdl:part name="parameters" element="tns:Missions_By_Name_UserResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_PersonnelSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Personnel" />
+  </wsdl:message>
+  <wsdl:message name="Insert_PersonnelSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_PersonnelResponse" />
+  </wsdl:message>
+  <wsdl:message name="Missions_By_Id_UserSoapIn">
+    <wsdl:part name="parameters" element="tns:Missions_By_Id_User" />
+  </wsdl:message>
+  <wsdl:message name="Missions_By_Id_UserSoapOut">
+    <wsdl:part name="parameters" element="tns:Missions_By_Id_UserResponse" />
+  </wsdl:message>
+  <wsdl:message name="Je_Me_ConnecteSoapIn">
+    <wsdl:part name="parameters" element="tns:Je_Me_Connecte" />
+  </wsdl:message>
+  <wsdl:message name="Je_Me_ConnecteSoapOut">
+    <wsdl:part name="parameters" element="tns:Je_Me_ConnecteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_PersonnelSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Personnel" />
+  </wsdl:message>
+  <wsdl:message name="Update_PersonnelSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_PersonnelResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_userSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_user" />
+  </wsdl:message>
+  <wsdl:message name="Delete_userSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_userResponse" />
+  </wsdl:message>
+  <wsdl:message name="insert_missionSoapIn">
+    <wsdl:part name="parameters" element="tns:insert_mission" />
+  </wsdl:message>
+  <wsdl:message name="insert_missionSoapOut">
+    <wsdl:part name="parameters" element="tns:insert_missionResponse" />
+  </wsdl:message>
+  <wsdl:message name="insert_FraisSoapIn">
+    <wsdl:part name="parameters" element="tns:insert_Frais" />
+  </wsdl:message>
+  <wsdl:message name="insert_FraisSoapOut">
+    <wsdl:part name="parameters" element="tns:insert_FraisResponse" />
+  </wsdl:message>
+  <wsdl:message name="insert_ligne_FraisSoapIn">
+    <wsdl:part name="parameters" element="tns:insert_ligne_Frais" />
+  </wsdl:message>
+  <wsdl:message name="insert_ligne_FraisSoapOut">
+    <wsdl:part name="parameters" element="tns:insert_ligne_FraisResponse" />
+  </wsdl:message>
+  <wsdl:message name="List_note_fraisSoapIn">
+    <wsdl:part name="parameters" element="tns:List_note_frais" />
+  </wsdl:message>
+  <wsdl:message name="List_note_fraisSoapOut">
+    <wsdl:part name="parameters" element="tns:List_note_fraisResponse" />
+  </wsdl:message>
+  <wsdl:message name="list_ligne_fraisSoapIn">
+    <wsdl:part name="parameters" element="tns:list_ligne_frais" />
+  </wsdl:message>
+  <wsdl:message name="list_ligne_fraisSoapOut">
+    <wsdl:part name="parameters" element="tns:list_ligne_fraisResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MyWSSoap">
+    <wsdl:operation name="Liste_Mission">
+      <wsdl:input message="tns:Liste_MissionSoapIn" />
+      <wsdl:output message="tns:Liste_MissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Liste_Personnel">
+      <wsdl:input message="tns:Liste_PersonnelSoapIn" />
+      <wsdl:output message="tns:Liste_PersonnelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Missions_By_Name_User">
+      <wsdl:input message="tns:Missions_By_Name_UserSoapIn" />
+      <wsdl:output message="tns:Missions_By_Name_UserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Personnel">
+      <wsdl:input message="tns:Insert_PersonnelSoapIn" />
+      <wsdl:output message="tns:Insert_PersonnelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Missions_By_Id_User">
+      <wsdl:input message="tns:Missions_By_Id_UserSoapIn" />
+      <wsdl:output message="tns:Missions_By_Id_UserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Je_Me_Connecte">
+      <wsdl:input message="tns:Je_Me_ConnecteSoapIn" />
+      <wsdl:output message="tns:Je_Me_ConnecteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Personnel">
+      <wsdl:input message="tns:Update_PersonnelSoapIn" />
+      <wsdl:output message="tns:Update_PersonnelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_user">
+      <wsdl:input message="tns:Delete_userSoapIn" />
+      <wsdl:output message="tns:Delete_userSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insert_mission">
+      <wsdl:input message="tns:insert_missionSoapIn" />
+      <wsdl:output message="tns:insert_missionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insert_Frais">
+      <wsdl:input message="tns:insert_FraisSoapIn" />
+      <wsdl:output message="tns:insert_FraisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insert_ligne_Frais">
+      <wsdl:input message="tns:insert_ligne_FraisSoapIn" />
+      <wsdl:output message="tns:insert_ligne_FraisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="List_note_frais">
+      <wsdl:input message="tns:List_note_fraisSoapIn" />
+      <wsdl:output message="tns:List_note_fraisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="list_ligne_frais">
+      <wsdl:input message="tns:list_ligne_fraisSoapIn" />
+      <wsdl:output message="tns:list_ligne_fraisSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MyWSSoap" type="tns:MyWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Liste_Mission">
+      <soap:operation soapAction="http://tempuri.org/Liste_Mission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Liste_Personnel">
+      <soap:operation soapAction="http://tempuri.org/Liste_Personnel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Missions_By_Name_User">
+      <soap:operation soapAction="http://tempuri.org/Missions_By_Name_User" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Personnel">
+      <soap:operation soapAction="http://tempuri.org/Insert_Personnel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Missions_By_Id_User">
+      <soap:operation soapAction="http://tempuri.org/Missions_By_Id_User" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Je_Me_Connecte">
+      <soap:operation soapAction="http://tempuri.org/Je_Me_Connecte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Personnel">
+      <soap:operation soapAction="http://tempuri.org/Update_Personnel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_user">
+      <soap:operation soapAction="http://tempuri.org/Delete_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_mission">
+      <soap:operation soapAction="http://tempuri.org/insert_mission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_Frais">
+      <soap:operation soapAction="http://tempuri.org/insert_Frais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_ligne_Frais">
+      <soap:operation soapAction="http://tempuri.org/insert_ligne_Frais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="List_note_frais">
+      <soap:operation soapAction="http://tempuri.org/List_note_frais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="list_ligne_frais">
+      <soap:operation soapAction="http://tempuri.org/list_ligne_frais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MyWSSoap12" type="tns:MyWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Liste_Mission">
+      <soap12:operation soapAction="http://tempuri.org/Liste_Mission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Liste_Personnel">
+      <soap12:operation soapAction="http://tempuri.org/Liste_Personnel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Missions_By_Name_User">
+      <soap12:operation soapAction="http://tempuri.org/Missions_By_Name_User" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Personnel">
+      <soap12:operation soapAction="http://tempuri.org/Insert_Personnel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Missions_By_Id_User">
+      <soap12:operation soapAction="http://tempuri.org/Missions_By_Id_User" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Je_Me_Connecte">
+      <soap12:operation soapAction="http://tempuri.org/Je_Me_Connecte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Personnel">
+      <soap12:operation soapAction="http://tempuri.org/Update_Personnel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_user">
+      <soap12:operation soapAction="http://tempuri.org/Delete_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_mission">
+      <soap12:operation soapAction="http://tempuri.org/insert_mission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_Frais">
+      <soap12:operation soapAction="http://tempuri.org/insert_Frais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insert_ligne_Frais">
+      <soap12:operation soapAction="http://tempuri.org/insert_ligne_Frais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="List_note_frais">
+      <soap12:operation soapAction="http://tempuri.org/List_note_frais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="list_ligne_frais">
+      <soap12:operation soapAction="http://tempuri.org/list_ligne_frais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MyWS">
+    <wsdl:port name="MyWSSoap" binding="tns:MyWSSoap">
+      <soap:address location="http://localhost:50294/MyWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MyWSSoap12" binding="tns:MyWSSoap12">
+      <soap12:address location="http://localhost:50294/MyWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
